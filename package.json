@@ -1,5 +1,5 @@
 {
-  "name": "express-wss",
+  "name": "simple-wss",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.ts",
