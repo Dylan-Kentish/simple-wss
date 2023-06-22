@@ -1,11 +1,16 @@
 import { Server, WebSocket } from "ws";
+import "dotenv/config";
 
 type Socket = {
   isAlive: boolean;
 } & WebSocket;
 
+const port = Number(process.env.PORT) || 8080;
+
+console.log("Starting server on port " + port);
+
 const wss = new Server({
-  port: 8080,
+  port,
 });
 
 wss.on("connection", (ws: Socket) => {
@@ -37,4 +42,4 @@ wss.on("close", () => {
   clearInterval(interval);
 });
 
-console.log("Server started on port 8080");
+console.log("Server started on port ", port);
