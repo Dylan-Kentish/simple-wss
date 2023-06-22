@@ -6,10 +6,12 @@ type Socket = {
 } & WebSocket;
 
 const port = Number(process.env.PORT) || 8080;
+const host = process.env.HOST || "0.0.0.0";
 
 console.log("Starting server on port " + port);
 
 const wss = new Server({
+  host,
   port,
 });
 
@@ -42,4 +44,4 @@ wss.on("close", () => {
   clearInterval(interval);
 });
 
-console.log("Server started on port ", port);
+console.log("Server started on ", wss.options.host + ":" + wss.options.port);
